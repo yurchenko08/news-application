@@ -1,16 +1,16 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-const API_KEY = 'dca716f4e5384d489a110bf3b374980c';
+const API_KEY = 'z6CjzmCZAG5hI3ZzxLyljMYvBm1gdduD3b7avEy1';
 
 export const loadAllPreviews = createAsyncThunk(
   'articlePreviews/loadAllPreviews',
   async () => {
     const response = await fetch(
-      `https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`
+      ` https://api.thenewsapi.com/v1/news/top?api_token=${API_KEY}&locale=us&limit=3`
     );
-    const data = await response.json();
-    console.log(data.articles);
-    return data.articles;
+    const { data } = await response.json();
+    console.log(data);
+    return data;
   }
 );
 

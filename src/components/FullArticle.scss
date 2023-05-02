@@ -1,0 +1,36 @@
+.current-article-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+
+  .current-article-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .article-full-image-container {
+    margin-bottom: 20px;
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  .article-full-text {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+
+  a {
+    display: block;
+    font-size: 16px;
+    color: #0077ff;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

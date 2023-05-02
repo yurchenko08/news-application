@@ -7,7 +7,8 @@ import {
 } from './articlePreviewsSlice';
 import ArticleListItem from '../../components/ArticleListItem';
 import './ArticlePreviews.scss';
-
+import { loadCurrentArticle } from '../currentArticle/currentArticleSlice';
+import { Link } from 'react-router-dom';
 const ArticlePreviews = () => {
   const dispatch = useDispatch();
   const articlePreviews = useSelector(selectAllPreviews);
@@ -15,25 +16,31 @@ const ArticlePreviews = () => {
 
   useEffect(() => {
     dispatch(loadAllPreviews());
-    console.log(articlePreviews);
-  }, [dispatch]);
+  }, []);
+
+  const handleClick = (article) => {
+    dispatch(loadCurrentArticle(article.uuid));
+  };
 
   return (
     <>
       {isLoadingPreviews ? (
-        <div>loading state</div>
+        <div>Loading articles...</div>
       ) : (
         <section className='articles-container'>
           <div className='section-title'>All Articles</div>
           {articlePreviews.map((article) => (
-            <div key={article.id}>
+            <Link
+              to={`/article/${article.uuid}`}
+              onClick={() => handleClick(article)}
+              key={article.uuid}
+            >
               <ArticleListItem article={article} />
-            </div>
+            </Link>
           ))}
         </section>
       )}
     </>
   );
 };
-
 export default ArticlePreviews;

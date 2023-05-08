@@ -29,7 +29,7 @@ export const articlePreviewsSlice = createSlice({
       })
       .addCase(loadAllPreviews.fulfilled, (state, action) => {
         state.isLoadingArticlePreviews = false;
-        state.articles = action.payload;
+        state.articles = [...state.articles, ...action.payload];
       })
       .addCase(loadAllPreviews.rejected, (state, action) => {
         state.isLoadingArticlePreviews = false;
